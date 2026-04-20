@@ -1,25 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Software Dev Chatbot</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Friendly Chatbot</title>
 </head>
 <body>
-    <div class="main-container">
-        <div class="chat-container">
-            <div class="header">
-                <img src="chat.png" alt="Logo" class="logo" />
-                <h2 class="name">Chat Window</h2>
-            </div>
-            <div class="chat-log" id="chat-log"></div>
-            <div class="input-container">
-                <input type="text" id="user-input" placeholder="Ask me anything..." />
-                <button onclick="sendMessage()">Send</button>
-            </div>
-        </div>
-    </div>
-    <script src="main.js"></script>
+  <main class="wrap">
+    <aside class="hero">
+      <img src="chat.png" alt="Chatbot logo" class="hero-logo" />
+      <h1 class="hero-title">Your Friendly Assistant</h1>
+      <p class="hero-sub">Fast, helpful answers — built to keep users coming back.</p>
+      <div class="suggestions" aria-label="Quick suggestions">
+        <button class="suggestion">Explain this code</button>
+        <button class="suggestion">Write a unit test</button>
+        <button class="suggestion">Debug my error</button>
+      </div>
+    </aside>
+
+    <section class="chat-area" aria-label="Chat area">
+      <header class="chat-header">
+        <div class="chat-title">Chat</div>
+        <div class="chat-status" id="chat-status">Online</div>
+      </header>
+
+      <div id="chat-log" class="chat-log" role="log" aria-live="polite"></div>
+
+      <form id="input-form" class="composer" autocomplete="off">
+        <textarea id="user-input" rows="1" placeholder="Start typing... (Enter to send, Shift+Enter for newline)"></textarea>
+        <button type="submit" id="send-btn" aria-label="Send message">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
 </body>
 </html>
