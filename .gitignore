@@ -1,0 +1,3 @@
+# Ignore Visual Studio workspace folder and any .vs files
+.vs/
+*.vs
