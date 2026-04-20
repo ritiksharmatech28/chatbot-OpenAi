@@ -2,16 +2,16 @@ from flask import Flask, request, jsonify, send_from_directory
 import os
 from openai_api import OpenAIAPI
 
-app = Flask(__name__, static_folder='public')
+app = Flask(__name__, static_folder='../.theia/public')
 port = int(os.environ.get('PORT', 3000))
 
 @app.route('/')
 def index():
-    return send_from_directory('public', 'index.html')
+    return send_from_directory('../.theia/public', 'index.html')
 
 @app.route('/<path:path>')
 def static_files(path):
-    return send_from_directory('public', path)
+    return send_from_directory('../.theia/public', path)
 
 @app.route('/getChatbotResponse', methods=['POST'])
 def get_chatbot_response():
@@ -20,9 +20,11 @@ def get_chatbot_response():
     
     # Use OpenAI API to generate a response
     chatbot_response = OpenAIAPI.generate_response(user_message)
+    print("User message:", user_message)
     
     # Send the response back to the client
     return jsonify({'chatbotResponse': chatbot_response})
+    print("Chatbot response:", chatbot_response)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, debug=True)
