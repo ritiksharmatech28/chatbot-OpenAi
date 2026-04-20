@@ -1,3 +1,8 @@
 # Ignore Visual Studio workspace folder and any .vs files
 .vs/
 *.vs
+
+# Ignore environment files
+# ignore any .env in repository or subfolders
+.env
+**/.env
